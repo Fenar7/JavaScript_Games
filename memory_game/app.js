@@ -68,6 +68,8 @@ console.log(cardArray)
 
 const gridDisplay = document.querySelector('#grid')
 
+const cardsChoosen = []
+
 function createBoard(){
     for(let i=0;i<cardArray.length;i++){
         const card = document.createElement('img')
@@ -82,5 +84,11 @@ function createBoard(){
 createBoard()
 
 function flipCard(){
+    console.log(cardArray)
+    let cardId = this.getAttribute('data-id')
+    cardsChoosen.push(cardArray[cardId].name)
+    console.log('clicked',cardId)
+    console.log(cardsChoosen)
 
+    this.setAttribute('src',cardArray[cardId].img)
 }
