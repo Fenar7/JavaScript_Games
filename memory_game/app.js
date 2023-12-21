@@ -87,14 +87,16 @@ createBoard()
 
 function checkMatch(){
     const cards = document.querySelectorAll('#grid img')
+    const optionOneId = cardsChoosenIds[0]
+    const optionTwoId = cardsChoosenIds[1]
     console.log('check for match!')
     console.log(cards)
     if(cardsChoosen[0]==cardsChoosen[1]){
         alert('You found a match')
-        cards[cardsChoosenIds[0]].setAttribute('src','images/white.png')
-        cards[cardsChoosenIds[1]].setAttribute('src','images/white.png')
-        cards[cardsChoosenIds[0]].removeEventListener('click',flipCard)
-        cards[cardsChoosenIds[1]].removeEventListener('click',flipCard)
+        cards[optionOneId].setAttribute('src','images/white.png')
+        cards[optionTwoId].setAttribute('src','images/white.png')
+        cards[optionOneId].removeEventListener('click',flipCard)
+        cards[optionTwoId].removeEventListener('click',flipCard)
         cardsWon.push(cardsChoosen)
     }
 
