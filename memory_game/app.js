@@ -90,5 +90,12 @@ function flipCard(){
     console.log('clicked',cardId)
     console.log(cardsChoosen)
 
+    function checkMatch(){
+        console.log('check for match!')
+    }
+
     this.setAttribute('src',cardArray[cardId].img)
+    if(cardsChoosen.length===2){
+        setTimeout(checkMatch, 500)
+    }
 }
