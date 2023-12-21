@@ -67,6 +67,9 @@ cardArray.sort(() => 0.5 - Math.random())
 console.log(cardArray)
 
 const gridDisplay = document.querySelector('#grid')
+const resultDisplay = document.querySelector('#result')
+const scoreDisplay = document.querySelector('#score')
+let score = 0
 
 let cardsChoosen = []
 let cardsChoosenIds = []
@@ -100,6 +103,8 @@ function checkMatch(){
         cards[optionTwoId].setAttribute('src','images/white.png')
         cards[optionOneId].removeEventListener('click',flipCard)
         cards[optionTwoId].removeEventListener('click',flipCard)
+        score++
+        scoreDisplay.innerHTML = score
         cardsWon.push(cardsChoosen)
     }else{
         cards[optionOneId].setAttribute('src','images/blank.png')
@@ -108,6 +113,10 @@ function checkMatch(){
 
     cardsChoosen = []
     cardsChoosenIds = []
+
+    if(cardsWon.length==(cardArray.length/2)){
+        resultDisplay.innerHTML = '<h1>Congragulations you Won!!</h1>'
+    }
 }
 
 function flipCard(){
