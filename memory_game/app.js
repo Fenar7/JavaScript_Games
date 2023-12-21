@@ -69,6 +69,7 @@ console.log(cardArray)
 const gridDisplay = document.querySelector('#grid')
 
 const cardsChoosen = []
+const cardsChoosenIds = []
 
 function createBoard(){
     for(let i=0;i<cardArray.length;i++){
@@ -83,16 +84,23 @@ function createBoard(){
 
 createBoard()
 
+function checkMatch(){
+    const cards = document.querySelectorAll('#grid img')
+    console.log('check for match!')
+    console.log(cards)
+    if(cardsChoosen[0]==cardsChoosen[1]){
+        alert('You found a match')
+        cards[cardsChoosenIds[0]].setAttribute('src','images/white.png')
+    }
+}
+
 function flipCard(){
     console.log(cardArray)
     let cardId = this.getAttribute('data-id')
     cardsChoosen.push(cardArray[cardId].name)
-    console.log('clicked',cardId)
+    cardsChoosenIds.push(cardId)
     console.log(cardsChoosen)
-
-    function checkMatch(){
-        console.log('check for match!')
-    }
+    console.log(cardsChoosenIds)
 
     this.setAttribute('src',cardArray[cardId].img)
     if(cardsChoosen.length===2){
