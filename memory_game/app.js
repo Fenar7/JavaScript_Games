@@ -68,8 +68,9 @@ console.log(cardArray)
 
 const gridDisplay = document.querySelector('#grid')
 
-const cardsChoosen = []
-const cardsChoosenIds = []
+let cardsChoosen = []
+let cardsChoosenIds = []
+const cardsWon = []
 
 function createBoard(){
     for(let i=0;i<cardArray.length;i++){
@@ -91,7 +92,14 @@ function checkMatch(){
     if(cardsChoosen[0]==cardsChoosen[1]){
         alert('You found a match')
         cards[cardsChoosenIds[0]].setAttribute('src','images/white.png')
+        cards[cardsChoosenIds[1]].setAttribute('src','images/white.png')
+        cards[cardsChoosenIds[0]].removeEventListener('click',flipCard)
+        cards[cardsChoosenIds[1]].removeEventListener('click',flipCard)
+        cardsWon.push(cardsChoosen)
     }
+
+    cardsChoosen = []
+    cardsChoosenIds = []
 }
 
 function flipCard(){
